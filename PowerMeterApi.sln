@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerMeterApi", "PowerMeterApi.csproj", "{9558464C-8FFE-4625-A980-E1E3809D8779}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerMeterTest", "..\PowerMeterTest\PowerMeterTest.csproj", "{FA5873C9-0B86-4CCD-8194-CDB01C27E447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9558464C-8FFE-4625-A980-E1E3809D8779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9558464C-8FFE-4625-A980-E1E3809D8779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9558464C-8FFE-4625-A980-E1E3809D8779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA5873C9-0B86-4CCD-8194-CDB01C27E447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA5873C9-0B86-4CCD-8194-CDB01C27E447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA5873C9-0B86-4CCD-8194-CDB01C27E447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA5873C9-0B86-4CCD-8194-CDB01C27E447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
