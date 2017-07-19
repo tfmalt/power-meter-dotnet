@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WebAPIApplication;
+using PowerMeterApi;
 
-namespace WebAPIApplication.Models
+namespace PowerMeterApi.Models
 {
     public class TodoContext : DbContext
     {

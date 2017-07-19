@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebAPIApplication.Models;
+using PowerMeterApi.Models;
 
-namespace WebAPIApplication.Controllers
+namespace PowerMeterApi.Controllers
 {
     [Route("api/[controller]")]
     public class TodoController : Controller
