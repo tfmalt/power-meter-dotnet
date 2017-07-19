@@ -65,16 +65,43 @@ namespace PowerMeterApi.Controllers
             return CreatedAtRoute("GetTodo", new {id = item.Id}, item);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("todo/{id}")]
+        public IActionResult Update(long id, [FromBody] TodoItem item)
         {
+            if (item == null || item.Id != id)
+            {
+                return BadRequest();
+            }
+
+            var todo = _context.TodoItems.FirstOrDefault(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            todo.IsComplete = item.IsComplete;
+            todo.Name = item.Name;
+
+            _context.TodoItems.Update(todo);
+            _context.SaveChanges();
+
+            return new NoContentResult();
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("todo/{id}")]
+        public IActionResult Delete(long id)
         {
+            var todo = _context.TodoItems.First(t => t.Id == id);
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todo);
+            _context.SaveChanges();
+            return new NoContentResult();
         }
     }
+    
 }
