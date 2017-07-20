@@ -47,7 +47,9 @@ namespace PowerMeterApi.Controllers
                 return NotFound();
             }
 
-            return new ObjectResult(item);
+            
+            var result = new ObjectResult(item);
+            return result;
         }
 
 
