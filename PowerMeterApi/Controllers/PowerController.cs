@@ -48,18 +48,49 @@ namespace PowerMeterApi.Controllers
             var db = _redis.GetDatabase();
 
             var result = db.StringGet("meterTotal");
-            var data = new MeterTotal {
-                Value = (Double)result,
+            var data = new MeterTotal
+            {
+                Value       = (Double)result,
                 Description = "Current Meter Total",
-                Timestamp = DateTime.Now
+                Timestamp   = DateTime.Now
             };
 
             return new ObjectResult(data); 
         }
 
+        [HttpGet("kwh/seconds/{count}")]
+        public async Task<IActionResult> GetKwhForSeconds(long count)
+        {
+            // return NotFound(new { Error = "Type not found." });
+            var list = await GetRangeFromEnd("seconds", count);            
+            return new ObjectResult(list);
+        }
+
+        private async Task<List<String>> GetRangeFromEnd(string key, long count = 1)
+        {
+            var db = _redis.GetDatabase();
+
+            count = (key == "seconds") ? (long)Math.Ceiling((double)count / 10) : count;
+
+            var list = await db.ListRangeAsync(key, count * -1);
+            var result = new List<String>();
+            foreach (RedisValue item in list)
+            {
+                result.Add((String)item);
+            }
+            return result;
+        }
+
+        private bool IsValidType(string type)
+        {
+            if (type == "seconds") return true;
+            return false;
+        }
+
     //    [HttpPut("todo/{id}")]
         //public IActionResult Update(long id, [FromBody] TodoItem item)
     //    {
+            // var db = _redis.GetDatabase();
     //        if (item == null || item.Id != id)
     //        {
     //            return BadRequest();
